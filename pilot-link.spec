@@ -6,7 +6,7 @@
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.2
+Version:	0.12.1
 Release:	%mkrel 2
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
@@ -20,6 +20,7 @@ BuildRequires:	perl-devel
 BuildRequires:	XFree86-devel
 BuildRequires:  readline-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  automake1.4
 BuildRequires:  chrpath
 BuildRequires:  libusb-devel
 Buildrequires:  popt-devel
@@ -27,6 +28,7 @@ BuildRequires:  libpng-devel
 
 Obsoletes:	%{name}-tcl
 Provides:	%{name}-tcl
+
 
 %description
 This suite of tools allows you to upload and download programs and
@@ -119,9 +121,13 @@ EOF
 %doc doc/README.usb doc/TODO
 
 %config(noreplace) %{_sysconfdir}/modprobe.d/visor
+%{_bindir}/install-*
 %{_bindir}/pilot-*
 %exclude %{_bindir}/pilot-undelete
+%{_bindir}/read-*
+%{_mandir}/man1/install-*
 %{_mandir}/man1/pilot-*
+%{_mandir}/man1/read-*
 %{_mandir}/man7/*
 %{_datadir}/pilot-link
 
@@ -143,8 +149,10 @@ EOF
 
 %files -n perl-PDA-Pilot
 %defattr(-,root,root)
-%{_bindir}/pilot-ietf2datebook
-%{_bindir}/pilot-sync-plan
+%{_bindir}/ietf2datebook
+%{_bindir}/sync-plan
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
 %{perl_vendorarch}/auto/PDA/*
+%{perl_vendorarch}/PDA/*
+
