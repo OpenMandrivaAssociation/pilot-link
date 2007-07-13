@@ -1,11 +1,12 @@
 %define	lib_major	9
 %define	libname		%mklibname pisock %{lib_major}
+%define develname	%mklibname pisock -d
 %define	libsync		%mklibname pisync %{sync_major}
 %define	sync_major	0
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.1
+Version:	0.12.2
 Release:	%mkrel 1
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
@@ -19,7 +20,6 @@ BuildRequires:	perl-devel
 BuildRequires:	XFree86-devel
 BuildRequires:  readline-devel
 BuildRequires:  ncurses-devel
-BuildRequires:  automake1.4
 BuildRequires:  chrpath
 BuildRequires:  libusb-devel
 Buildrequires:  popt-devel
@@ -53,7 +53,7 @@ Group:		System/Libraries
 %description -n	%{libsync}
 Libraries needed to use pilot-link
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	PalmPilot development header files
 Group:		Development/C
 Requires:	%{name} = %{version}-%{release}
@@ -64,8 +64,9 @@ Provides:	%{name}-devel = %{version}-%{release}
 Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	libpisock-devel = %{version}-%{release}
 Conflicts:	%{_lib}pisock8-devel
+Obsoletes:	%{_lib}pisock9-devel
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 This package contains the development headers that are used to build
 the pilot-link package.  It also includes the static libraries
 necessary to build static pilot apps.
@@ -136,7 +137,7 @@ EOF
 %defattr(-,root,root)
 %{_libdir}/libpisync.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/*a
 %{_libdir}/*.so
