@@ -5,8 +5,8 @@
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.0
-Release:	%mkrel 3
+Version:	0.12.1
+Release:	%mkrel 1
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
@@ -21,6 +21,9 @@ BuildRequires:  readline-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  automake1.4
 BuildRequires:  chrpath
+BuildRequires:  libusb-devel
+Buildrequires:  popt-devel
+BuildRequires:  libpng-devel
 
 Obsoletes:	%{name}-tcl
 Provides:	%{name}-tcl
@@ -97,9 +100,6 @@ cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/visor
 blacklist visor
 EOF
 
-# remove unpackaged files
-rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/udev
-
 %post -p /sbin/ldconfig -n %{libname}
 
 %postun -p /sbin/ldconfig -n %{libname}
@@ -152,4 +152,3 @@ rm -rf $RPM_BUILD_ROOT%{_sysconfdir}/udev
 %{_mandir}/man1/ietf2datebook*
 %{perl_vendorarch}/auto/PDA/*
 %{perl_vendorarch}/PDA/*
-
