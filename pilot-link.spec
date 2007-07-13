@@ -119,13 +119,9 @@ EOF
 %doc doc/README.usb doc/TODO
 
 %config(noreplace) %{_sysconfdir}/modprobe.d/visor
-%{_bindir}/install-*
 %{_bindir}/pilot-*
 %exclude %{_bindir}/pilot-undelete
-%{_bindir}/read-*
-%{_mandir}/man1/install-*
 %{_mandir}/man1/pilot-*
-%{_mandir}/man1/read-*
 %{_mandir}/man7/*
 %{_datadir}/pilot-link
 
@@ -147,9 +143,8 @@ EOF
 
 %files -n perl-PDA-Pilot
 %defattr(-,root,root)
-%{_bindir}/ietf2datebook
+%{_bindir}/pilot-ietf2datebook
 %{_bindir}/sync-plan
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
 %{perl_vendorarch}/auto/PDA/*
-%{perl_vendorarch}/PDA/*
