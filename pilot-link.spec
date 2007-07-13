@@ -144,7 +144,7 @@ EOF
 %files -n perl-PDA-Pilot
 %defattr(-,root,root)
 %{_bindir}/pilot-ietf2datebook
-%{_bindir}/sync-plan
+%{_bindir}/pilot-sync-plan
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
 %{perl_vendorarch}/auto/PDA/*
