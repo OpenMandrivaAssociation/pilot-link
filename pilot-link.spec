@@ -7,7 +7,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
