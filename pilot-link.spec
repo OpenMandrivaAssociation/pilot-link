@@ -9,10 +9,13 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.2
-Release:	%mkrel 1
+Release:	%mkrel 2
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
+# CG: Patch based on information: 
+#   http://lists.pilot-link.org/pipermail/pilot-link-devel/2007-May/001658.html
+Patch1:		pilot-link-fix-m4.patch
 URL:		http://www.pilot-link.org/
 License:	GPL/LGPL
 Group:		Communications
@@ -88,6 +91,7 @@ This package provides perl modules for supporting Palm.
 
 %prep 
 %setup -q -a 1
+%patch1 -p1 -b .m4
 
 %build
 %configure2_5x  --with-perl --enable-conduits --enable-libusb
