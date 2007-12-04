@@ -22,7 +22,7 @@ Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	bison
 BuildRequires:	perl-devel
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:  readline-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  automake
