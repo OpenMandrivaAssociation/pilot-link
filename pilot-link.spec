@@ -19,6 +19,7 @@ Patch1:		pilot-link-fix-m4.patch
 URL:		http://www.pilot-link.org/
 License:	GPL/LGPL
 Group:		Communications
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	bison
 BuildRequires:	perl-devel
 BuildRequires:	X11-devel
