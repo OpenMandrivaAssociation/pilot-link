@@ -94,6 +94,8 @@ This package provides perl modules for supporting Palm.
 %patch1 -p1 -b .m4
 
 %build
+# (tv) fix build by disabling -Werror:
+perl -pi -e 's! -Werror"!"!' configure
 %configure2_5x  --with-perl --enable-conduits --enable-libusb
 
 # parallel compilation is broken
