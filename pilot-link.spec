@@ -155,5 +155,6 @@ EOF
 %defattr(-,root,root)
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
+%{_mandir}/man3/PDA::Pilot.*
 %{perl_vendorarch}/auto/PDA/*
 
