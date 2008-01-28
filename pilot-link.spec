@@ -4,18 +4,19 @@
 %define	libname		%mklibname pisock %{lib_major}
 %define develname	%mklibname pisock -d
 %define	libsync		%mklibname pisync %{sync_major}
-%define	sync_major	0
+%define	sync_major	1
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.2
-Release:	%mkrel 3
+Version:	0.12.3
+Release:	%mkrel 1
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
-# CG: Patch based on information: 
-#   http://lists.pilot-link.org/pipermail/pilot-link-devel/2007-May/001658.html
-Patch1:		pilot-link-fix-m4.patch
+Source2:	19-palm-acl-management.fdi
+Source3: 	pilot-device-file.policy
+# (fc) 0.12.3-1mdv fix Z22 support (CVS)
+Patch0:		pilot-link-0.12.3-z22.patch
 URL:		http://www.pilot-link.org/
 License:	GPL/LGPL
 Group:		Communications
@@ -91,11 +92,12 @@ This package provides perl modules for supporting Palm.
 
 %prep 
 %setup -q -a 1
-%patch1 -p1 -b .m4
+%patch0 -p1 -b .z22
 
-%build
 # (tv) fix build by disabling -Werror:
 perl -pi -e 's! -Werror"!"!' configure
+
+%build
 %configure2_5x  --with-perl --enable-conduits --enable-libusb
 
 # parallel compilation is broken
@@ -106,10 +108,28 @@ make
 
 %{makeinstall_std}
 
+# fix manpage install 
+%makeinstall_std -C doc/man
+
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/
 cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/visor
 blacklist visor
 EOF
+
+# remove unneeded files
+rm -f %{buildroot}%{_libdir}/perl5/*/*/*/PDA/dump.pl
+
+# remove broken prog
+rm -f %{buildroot}%{_bindir}/pilot-prc
+
+# Install hal rules file.
+mkdir -p %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/
+install -p -m644 %{SOURCE2} %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/19-palm-acl-management.fdi
+
+# Install PolicyKit
+mkdir -p %{buildroot}%{_datadir}/PolicyKit/policy
+install -p -m644 %{SOURCE3} %{buildroot}%{_datadir}/PolicyKit/policy/pilot-device-file.policy
+
 
 %post -p /sbin/ldconfig -n %{libname}
 
@@ -126,7 +146,7 @@ EOF
 %defattr(-,root,root)
 %doc COPYING ChangeLog README NEWS
 %doc connect-palm-ppp/
-%doc doc/README.usb doc/TODO
+%doc doc/README.usb doc/TODO doc/README.libusb
 
 %config(noreplace) %{_sysconfdir}/modprobe.d/visor
 %{_bindir}/pilot-*
@@ -134,6 +154,8 @@ EOF
 %{_mandir}/man1/pilot-*
 %{_mandir}/man7/*
 %{_datadir}/pilot-link
+%{_datadir}/hal/fdi/policy/10osvendor/19-palm-acl-management.fdi
+%{_datadir}/PolicyKit/policy/pilot-device-file.policy
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -156,5 +178,6 @@ EOF
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
 %{_mandir}/man3/PDA::Pilot.*
+%{perl_vendorarch}/PDA/*
 %{perl_vendorarch}/auto/PDA/*
 
