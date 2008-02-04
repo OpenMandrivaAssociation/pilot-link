@@ -9,12 +9,14 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
 Source3: 	pilot-device-file.policy
+Source4:	50pilot.sh
+Source5:	50pilot.csh
 # (fc) 0.12.3-1mdv fix Z22 support (CVS)
 Patch0:		pilot-link-0.12.3-z22.patch
 URL:		http://www.pilot-link.org/
@@ -130,6 +132,10 @@ install -p -m644 %{SOURCE2} %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/19
 mkdir -p %{buildroot}%{_datadir}/PolicyKit/policy
 install -p -m644 %{SOURCE3} %{buildroot}%{_datadir}/PolicyKit/policy/pilot-device-file.policy
 
+# install profile.d files
+mkdir -p %{buildroot}%{_sysconfdir}/profile.d
+install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/profile.d/
+install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 
 %post -p /sbin/ldconfig -n %{libname}
 
@@ -148,6 +154,7 @@ install -p -m644 %{SOURCE3} %{buildroot}%{_datadir}/PolicyKit/policy/pilot-devic
 %doc connect-palm-ppp/
 %doc doc/README.usb doc/TODO doc/README.libusb
 
+%config(noreplace) %{_sysconfdir}/profile.d/50pilot.*
 %config(noreplace) %{_sysconfdir}/modprobe.d/visor
 %{_bindir}/pilot-*
 %exclude %{_bindir}/pilot-undelete
