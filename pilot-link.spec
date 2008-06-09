@@ -150,13 +150,21 @@ mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/profile.d/
 install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 
+%if %mdkversion < 200900
 %post -p /sbin/ldconfig -n %{libname}
+%endif
 
+%if %mdkversion < 200900
 %postun -p /sbin/ldconfig -n %{libname}
+%endif
 
+%if %mdkversion < 200900
 %post -p /sbin/ldconfig -n %{libsync}
+%endif
 
+%if %mdkversion < 200900
 %postun -p /sbin/ldconfig -n %{libsync}
+%endif
 
 %clean
 [ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
