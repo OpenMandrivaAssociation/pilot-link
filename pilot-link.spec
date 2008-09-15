@@ -27,6 +27,8 @@ Patch2:		pilot-link-0.12.3-md5.patch
 Patch3:		pilot-link-0.12.1-var.patch
 # (fc) 0.12.3-3mdv fix open calls (Fedora)
 Patch4:		pilot-link-0.12.2-open.patch
+# (fc) 0.12.3-4mdv fix SJ-22 support (Michael Ekstrand)
+Patch5:		pilot-link-0.12.3-sj22.patch
 URL:		http://www.pilot-link.org/
 License:	GPL/LGPL
 Group:		Communications
@@ -108,6 +110,7 @@ This package provides perl modules for supporting Palm.
 %patch2 -p1 -b .md5
 %patch3 -p1 -b .var
 %patch4 -p1 -b .open
+%patch5 -p1 -b .sj22
 
 # (tv) fix build by disabling -Werror:
 perl -pi -e 's! -Werror"!"!' configure
