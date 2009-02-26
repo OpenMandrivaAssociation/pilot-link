@@ -33,7 +33,7 @@ Patch5:		pilot-link-0.12.3-sj22.patch
 Patch6: 	pilot-link-0.12.3-no-werror-messup.patch
 Patch7:		pilot-link-0.12.3-fix-format-strings.patch
 URL:		http://www.pilot-link.org/
-License:	GPL/LGPL
+License:	GPLv2+ and LGPLv2+
 Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	bison
