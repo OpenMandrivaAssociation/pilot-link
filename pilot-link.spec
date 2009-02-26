@@ -29,6 +29,9 @@ Patch3:		pilot-link-0.12.1-var.patch
 Patch4:		pilot-link-0.12.2-open.patch
 # (fc) 0.12.3-4mdv fix SJ-22 support (Michael Ekstrand)
 Patch5:		pilot-link-0.12.3-sj22.patch
+#gw this code doesn't work with our setting of Werror
+Patch6: 	pilot-link-0.12.3-no-werror-messup.patch
+Patch7:		pilot-link-0.12.3-fix-format-strings.patch
 URL:		http://www.pilot-link.org/
 License:	GPL/LGPL
 Group:		Communications
@@ -111,9 +114,12 @@ This package provides perl modules for supporting Palm.
 %patch3 -p1 -b .var
 %patch4 -p1 -b .open
 %patch5 -p1 -b .sj22
+%patch6 -p1 
+%patch7 -p1
+autoconf
 
 # (tv) fix build by disabling -Werror:
-perl -pi -e 's! -Werror"!"!' configure
+#perl -pi -e 's! -Werror"!"!' configure
 
 %build
 %configure2_5x  --with-perl --enable-conduits --enable-libusb
