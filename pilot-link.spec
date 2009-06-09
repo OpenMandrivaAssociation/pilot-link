@@ -8,21 +8,14 @@
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.3
-Release:	%mkrel 6
-
+Version:	0.12.4
+Release:	%mkrel 1
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
 Source3: 	pilot-device-file.policy
 Source4:	50pilot.sh
 Source5:	50pilot.csh
-# (fc) 0.12.3-1mdv fix Z22 support (CVS)
-Patch0:		pilot-link-0.12.3-z22.patch
-# (fc) 0.12.3-3mdv fix crash when pi_close is called for bluetooth (Fedora)
-Patch1:		bluetooth-session-register.diff
-# (fc) 0.12.3-3mdv fix MD5 header (Fedora)
-Patch2:		pilot-link-0.12.3-md5.patch
 # (fc) 0.12.3-3mdv fix undefined value (Fedora)
 Patch3:		pilot-link-0.12.1-var.patch
 # (fc) 0.12.3-3mdv fix open calls (Fedora)
@@ -108,9 +101,6 @@ This package provides perl modules for supporting Palm.
 
 %prep 
 %setup -q -a 1
-%patch0 -p1 -b .z22
-%patch1 -p0 -b .bluetooth-sdp
-%patch2 -p1 -b .md5
 %patch3 -p1 -b .var
 %patch4 -p1 -b .open
 %patch5 -p1 -b .sj22
