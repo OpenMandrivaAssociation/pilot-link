@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.4
-Release:	%mkrel 2
+Release:	%mkrel 3
 Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
@@ -59,9 +59,18 @@ Linux system.
 %package -n	%{libname}
 Summary:	Libraries needed to use pilot-link
 Group:		System/Libraries
+Requires:	%{name}-common >= %{name}-%{release}
 
 %description -n	%{libname}
 Libraries needed to use pilot-link
+
+%package common
+Summary:	Files used by pilot-link packages
+Group:		Communications
+Conflicts:	pilot-link < 0.12.4-3mdv
+
+%description common
+Files used by pilot-link packages.
 
 %package -n	%{libsync}
 Summary:	Libraries needed to use pilot-link
@@ -106,7 +115,9 @@ This package provides perl modules for supporting Palm.
 %patch5 -p1 -b .sj22
 %patch6 -p1 
 %patch7 -p1
-autoconf
+
+
+autoreconf
 
 # (tv) fix build by disabling -Werror:
 #perl -pi -e 's! -Werror"!"!' configure
@@ -144,6 +155,10 @@ install -p -m644 %{SOURCE2} %{buildroot}%{_datadir}/hal/fdi/policy/10osvendor/19
 mkdir -p %{buildroot}%{_datadir}/PolicyKit/policy
 install -p -m644 %{SOURCE3} %{buildroot}%{_datadir}/PolicyKit/policy/pilot-device-file.policy
 
+# Install udev rules
+mkdir -p %{buildroot}%{_sysconfdir}/udev/rules.d
+sed -e 's/MODE="0664"$/MODE="0664", ENV{ACL_MANAGE}="1"/g' doc/60-libpisock.rules >  %{buildroot}%{_sysconfdir}/udev/rules.d/60-libpisock.rules
+
 # install profile.d files
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/profile.d/
@@ -174,13 +189,16 @@ install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 %doc connect-palm-ppp/
 %doc doc/README.usb doc/TODO doc/README.libusb
 
-%config(noreplace) %{_sysconfdir}/profile.d/50pilot.*
-%config(noreplace) %{_sysconfdir}/modprobe.d/visor
 %{_bindir}/pilot-*
 %exclude %{_bindir}/pilot-undelete
 %{_mandir}/man1/pilot-*
 %{_mandir}/man7/*
 %{_datadir}/pilot-link
+
+%files common
+%config(noreplace) %{_sysconfdir}/profile.d/50pilot.*
+%config(noreplace) %{_sysconfdir}/modprobe.d/visor
+%{_sysconfdir}/udev/rules.d/*.rules
 %{_datadir}/hal/fdi/policy/10osvendor/19-palm-acl-management.fdi
 %{_datadir}/PolicyKit/policy/pilot-device-file.policy
 
