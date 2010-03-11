@@ -8,9 +8,9 @@
 
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
-Version:	0.12.4
-Release:	%mkrel 3
-Source:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
+Version:	0.12.5
+Release:	%mkrel 1
+Source0:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
 Source3: 	pilot-device-file.policy
@@ -19,7 +19,7 @@ Source5:	50pilot.csh
 # (fc) 0.12.3-3mdv fix undefined value (Fedora)
 Patch3:		pilot-link-0.12.1-var.patch
 # (fc) 0.12.3-3mdv fix open calls (Fedora)
-Patch4:		pilot-link-0.12.2-open.patch
+Patch4:		pilot-link-0.12.5-open.patch
 # (fc) 0.12.3-4mdv fix SJ-22 support (Michael Ekstrand)
 Patch5:		pilot-link-0.12.3-sj22.patch
 #gw this code doesn't work with our setting of Werror
