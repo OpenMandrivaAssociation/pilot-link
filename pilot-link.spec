@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	%mkrel 4
+Release:	%mkrel 5
 Source0:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
@@ -31,9 +31,7 @@ Group:		Communications
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	bison
 BuildRequires:	perl-devel
-BuildRequires:	X11-devel
 BuildRequires:  readline-devel
-BuildRequires:  ncurses-devel
 BuildRequires:  automake
 BuildRequires:  chrpath
 BuildRequires:  libusb-devel
@@ -59,7 +57,7 @@ Linux system.
 %package -n	%{libname}
 Summary:	Libraries needed to use pilot-link
 Group:		System/Libraries
-Requires:	%{name}-common >= %{name}-%{release}
+Requires:	%{name}-common >= %{version}-%{release}
 
 %description -n	%{libname}
 Libraries needed to use pilot-link
@@ -123,7 +121,7 @@ autoreconf
 #perl -pi -e 's! -Werror"!"!' configure
 
 %build
-%configure2_5x  --with-perl --enable-conduits --enable-libusb
+%configure2_5x  --with-perl --enable-conduits --enable-libusb --enable-threads
 
 # parallel compilation is broken
 make
