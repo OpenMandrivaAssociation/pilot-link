@@ -127,15 +127,15 @@ autoreconf
 make
 
 %install
-[ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
+[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
 
 %{makeinstall_std}
 
 # fix manpage install 
 %makeinstall_std -C doc/man
 
-mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/
-cat << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/modprobe.d/visor
+mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d/
+cat << EOF > %{buildroot}%{_sysconfdir}/modprobe.d/visor
 blacklist visor
 EOF
 
@@ -179,7 +179,7 @@ install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 %endif
 
 %clean
-[ -n "$RPM_BUILD_ROOT" -a "$RPM_BUILD_ROOT" != / ] && rm -rf $RPM_BUILD_ROOT
+[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
