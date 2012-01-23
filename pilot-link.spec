@@ -10,7 +10,10 @@ Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
 Release:	%mkrel 8
-Source0:		http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
+License:	GPLv2+ and LGPLv2+
+Group:		Communications
+URL:		http://www.pilot-link.org/
+Source0:	http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
 Source3: 	pilot-device-file.policy
@@ -25,23 +28,19 @@ Patch5:		pilot-link-0.12.3-sj22.patch
 #gw this code doesn't work with our setting of Werror
 Patch6: 	pilot-link-0.12.3-no-werror-messup.patch
 Patch7:		pilot-link-0.12.3-fix-format-strings.patch
-URL:		http://www.pilot-link.org/
-License:	GPLv2+ and LGPLv2+
-Group:		Communications
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Patch8:		pilot-link-0.12.5-build_with_perl514.patch
+Patch9:		pilot-link-0.12.3-libpng14.patch
+BuildRequires:	autoconf automake libtool
 BuildRequires:	bison
 BuildRequires:	perl-devel
 BuildRequires:  readline-devel
-BuildRequires:  automake
 BuildRequires:  chrpath
 BuildRequires:  libusb-devel
 Buildrequires:  popt-devel
 BuildRequires:  libpng-devel
 BuildRequires:  bluez-devel
-
 Obsoletes:	%{name}-tcl
 Provides:	%{name}-tcl
-
 
 %description
 This suite of tools allows you to upload and download programs and
@@ -113,9 +112,10 @@ This package provides perl modules for supporting Palm.
 %patch5 -p1 -b .sj22
 %patch6 -p1 
 %patch7 -p1
+%patch8 -p1 -b .perl514
+%patch9 -p0
 
-
-autoreconf
+autoreconf -fi
 
 # (tv) fix build by disabling -Werror:
 #perl -pi -e 's! -Werror"!"!' configure
@@ -127,9 +127,8 @@ autoreconf
 make
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
 
-%{makeinstall_std}
+%makeinstall_std
 
 # fix manpage install 
 %makeinstall_std -C doc/man
@@ -162,31 +161,13 @@ mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 install -p -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/profile.d/
 install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 
-%if %mdkversion < 200900
-%post -p /sbin/ldconfig -n %{libname}
-%endif
-
-%if %mdkversion < 200900
-%postun -p /sbin/ldconfig -n %{libname}
-%endif
-
-%if %mdkversion < 200900
-%post -p /sbin/ldconfig -n %{libsync}
-%endif
-
-%if %mdkversion < 200900
-%postun -p /sbin/ldconfig -n %{libsync}
-%endif
-
-%clean
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+# cleanup
+rm -f %{buildroot}%{_libdir}/*a
 
 %files
-%defattr(-,root,root)
 %doc COPYING ChangeLog README NEWS
 %doc connect-palm-ppp/
 %doc doc/README.usb doc/TODO doc/README.libusb
-
 %{_bindir}/pilot-*
 %exclude %{_bindir}/pilot-undelete
 %{_mandir}/man1/pilot-*
@@ -201,26 +182,20 @@ install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 %{_datadir}/PolicyKit/policy/pilot-device-file.policy
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libpisock.so.*
 
 %files -n %{libsync}
-%defattr(-,root,root)
 %{_libdir}/libpisync.so.*
 
 %files -n %{develname}
-%defattr(-,root,root)
-%{_libdir}/*a
 %{_libdir}/*.so
 %{_includedir}/*
 %{_datadir}/aclocal/pilot-link.m4
 %{_libdir}/pkgconfig/*
 
 %files -n perl-PDA-Pilot
-%defattr(-,root,root)
 %{_bindir}/pilot-undelete
 %{_mandir}/man1/ietf2datebook*
 %{_mandir}/man3/PDA::Pilot.*
 %{perl_vendorarch}/PDA/*
 %{perl_vendorarch}/auto/PDA/*
-
