@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
 URL:		http://www.pilot-link.org/
@@ -134,7 +134,7 @@ make
 %makeinstall_std -C doc/man
 
 mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d/
-cat << EOF > %{buildroot}%{_sysconfdir}/modprobe.d/visor
+cat << EOF > %{buildroot}%{_sysconfdir}/modprobe.d/visor.conf
 blacklist visor
 EOF
 
@@ -176,7 +176,7 @@ rm -f %{buildroot}%{_libdir}/*a
 
 %files common
 %config(noreplace) %{_sysconfdir}/profile.d/50pilot.*
-%config(noreplace) %{_sysconfdir}/modprobe.d/visor
+%config(noreplace) %{_sysconfdir}/modprobe.d/visor.conf
 %{_sysconfdir}/udev/rules.d/*.rules
 %{_datadir}/hal/fdi/policy/10osvendor/19-palm-acl-management.fdi
 %{_datadir}/PolicyKit/policy/pilot-device-file.policy
