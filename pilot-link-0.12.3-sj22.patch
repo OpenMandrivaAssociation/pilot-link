@@ -1,0 +1,12 @@
+Index: pilot-link-0.12.3/libpisock/usb.c
+===================================================================
+--- pilot-link-0.12.3.orig/libpisock/usb.c
++++ pilot-link-0.12.3/libpisock/usb.c
+@@ -655,6 +655,7 @@ pi_usb_dev_t known_devices[] = {
+ 		.vendor 	= 0x054c,
+ 		.product 	= 0x0066,
+ 		.idstr 		= "Sony T, SJ series, and other Palm OS 4.0 devices",
++		.flags      = USB_INIT_SONY_CLIE,
+ 	},
+ 
+ 	{
