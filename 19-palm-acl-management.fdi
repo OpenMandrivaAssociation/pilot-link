@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<deviceinfo version="0.2">
+
+  <device>
+
+   <match key="usb_device.vendor_id" int="0x054c">
+      <!-- Sony Clie 3.5 -->
+      <match key="usb_device.product_id" int="0x0038">
+         <append key="info.capabilities" type="strlist">access_control</append>
+         <merge key="access_control.type" type="string">pda</merge>
+         <merge key="access_control.file" type="copy_property">linux.device_file</merge>                            
+      </match>
+      <!-- Sony Clie SJ-22 -->
+      <match key="usb_device.product_id" int="0x0066">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+
+      <!-- Sony Clie S360 -->
+      <match key="usb_device.product_id" int="0x0095">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie NR series -->
+      <match key="usb_device.product_id" int="0x000a">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie NR70V/U series -->
+      <match key="usb_device.product_id" int="0x009a">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie NX series -->
+      <match key="usb_device.product_id" int="0x00da">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie NZ series -->
+      <match key="usb_device.product_id" int="0x00e9">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie UX series -->
+      <match key="usb_device.product_id" int="0x0144">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+      <!-- Sony Clie TJ series -->
+      <match key="usb_device.product_id" int="0x0169">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+   </match>
+
+   <!-- Handspring -->
+   <match key="usb_device.vendor_id" int="0x082d">
+      <!-- Visor -->
+      <match key="usb_device.product_id" int="0x0100">
+         <append key="info.capabilities" type="strlist">access_control</append>
+         <merge key="access_control.type" type="string">pda</merge>
+         <merge key="access_control.file" type="copy_property">linux.device_file</merge>                  
+      </match>
+      <!-- Treo -->
+      <match key="usb_device.product_id" int="0x0200">
+         <append key="info.capabilities" type="strlist">access_control</append>
+         <merge key="access_control.type" type="string">pda</merge>
+         <merge key="access_control.file" type="copy_property">linux.device_file</merge>                  
+      </match>
+      <!-- Treo 600 -->
+      <match key="usb_device.product_id" int="0x0300">
+         <append key="info.capabilities" type="strlist">access_control</append>
+         <merge key="access_control.type" type="string">pda</merge>
+         <merge key="access_control.file" type="copy_property">linux.device_file</merge>                  
+      </match>
+   </match>
+
+   <!-- All Palm PDAs from PalmOne, Palm, Inc. -->
+   <match key="usb_device.vendor_id" int="0x0830">
+        <append key="info.capabilities" type="strlist">access_control</append>
+        <merge key="access_control.type" type="string">pda</merge>
+        <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+   </match>-->
+
+   <!-- GARMIN IQUE 3600 -->
+    <match key="usb_device.vendor_id" int="0x091e">
+      <match key="usb_device.product_id" int="0x0004">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+    <!-- Kyocera 7135 Smartphone -->
+    <match key="usb_device.vendor_id" int="0x0c88">
+      <match key="usb_device.product_id" int="0x0021">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+    <!-- Kyocera 6035 Smartphone -->
+    <match key="usb_device.vendor_id" int="0x0c88">
+      <match key="usb_device.product_id" int="0xa226">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+    <!-- Tapware Zodiac -->
+    <match key="usb_device.vendor_id" int="0x12ef">
+      <match key="usb_device.product_id" int="0x0100">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+    <!-- ACEECA MEZ1000 -->
+    <match key="usb_device.vendor_id" int="0x04e8">
+      <match key="usb_device.product_id" int="0x0001">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+    <!-- Samsung i330 -->
+    <match key="usb_device.vendor_id" int="0x048e">
+      <match key="usb_device.product_id" int="0x8001">
+          <append key="info.capabilities" type="strlist">access_control</append>
+          <merge key="access_control.type" type="string">pda</merge>
+          <merge key="access_control.file" type="copy_property">linux.device_file</merge>
+      </match>
+    </match>
+
+  </device>
+</deviceinfo>
