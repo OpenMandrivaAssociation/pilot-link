@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	11
+Release:	12
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
 URL:		http://www.pilot-link.org/
@@ -30,6 +30,7 @@ Patch6: 	pilot-link-0.12.3-no-werror-messup.patch
 Patch7:		pilot-link-0.12.3-fix-format-strings.patch
 Patch8:		pilot-link-0.12.5-build_with_perl514.patch
 Patch9:		pilot-link-0.12.3-libpng14.patch
+Patch10:	pilot-link-automake-1.13.patch
 BuildRequires:	autoconf automake libtool
 BuildRequires:	bison
 BuildRequires:	perl-devel
@@ -112,6 +113,7 @@ This package provides perl modules for supporting Palm.
 %patch7 -p1
 %patch8 -p1 -b .perl514
 %patch9 -p0
+%patch10 -p1 -b .am113~
 
 autoreconf -fi
 

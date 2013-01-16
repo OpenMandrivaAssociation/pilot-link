@@ -1,0 +1,12 @@
+--- pilot-link-0.12.5/configure.ac.bero	2013-01-16 02:04:35.607799389 +0100
++++ pilot-link-0.12.5/configure.ac	2013-01-16 02:04:47.548656457 +0100
+@@ -16,8 +16,7 @@ dnl ******************************
+ dnl Limit to a specific ac version
+ dnl ******************************
+ AC_PREREQ(2.53)
+-AM_CONFIG_HEADER(config.h)
+-AM_CONFIG_HEADER(include/pi-md5.h)
++AC_CONFIG_HEADERS([config.h include/pi-md5.h])
+ 
+ dnl ******************************
+ dnl Pilot Link Version

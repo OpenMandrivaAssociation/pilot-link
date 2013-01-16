@@ -1,3 +1,5 @@
 sources:
-  "connect-palm-ppp.tar.bz2": 37c3d3f696e5191666f1a86c689c96de649f0e4e
-  "pilot-link-0.12.5.tar.bz2": b822466333ba58bbb32d7cfe5c547f4e7a78bdee
+  19-palm-acl-management.fdi: a465f26d3af87d2e4dadd84f7967b8834ccec90c
+  connect-palm-ppp.tar.bz2: 37c3d3f696e5191666f1a86c689c96de649f0e4e
+  pilot-device-file.policy: e4b6fb11cb6c378cb4f0992c0fcf67780134d53c
+  pilot-link-0.12.5.tar.bz2: b822466333ba58bbb32d7cfe5c547f4e7a78bdee
