@@ -1,4 +1,4 @@
-%define _requires_exceptions perl\(PDA::Pilot\)
+%define	__noautoreq	'perl\\(PDA::Pilot\\)'
 
 %define	lib_major	9
 %define	libname		%mklibname pisock %{lib_major}
