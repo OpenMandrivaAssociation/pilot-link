@@ -1,7 +1,7 @@
 http://repos.archlinux.org/wsvn/packages/pilot-link/trunk/pilot-link-png14.patch
 
---- src/pilot-read-notepad.c
-+++ src/pilot-read-notepad.c
+--- ./src/pilot-read-notepad.c
++++ ./src/pilot-read-notepad.c
 @@ -39,10 +39,6 @@
  
  #ifdef HAVE_PNG
@@ -24,8 +24,8 @@ http://repos.archlinux.org/wsvn/packages/pilot-link/trunk/pilot-link-png14.patch
  
     if(!png_ptr)
       return;
---- src/pilot-read-palmpix.c
-+++ src/pilot-read-palmpix.c
+--- ./src/pilot-read-palmpix.c
++++ ./src/pilot-read-palmpix.c
 @@ -42,10 +42,6 @@
  
  #ifdef HAVE_PNG
@@ -48,8 +48,8 @@ http://repos.archlinux.org/wsvn/packages/pilot-link/trunk/pilot-link-png14.patch
  
  	if(!png_ptr)
  		return;
---- src/pilot-read-screenshot.c
-+++ src/pilot-read-screenshot.c
+--- ./src/pilot-read-screenshot.c
++++ ./src/pilot-read-screenshot.c
 @@ -40,10 +40,6 @@
  
  #ifdef HAVE_PNG
@@ -72,8 +72,8 @@ http://repos.archlinux.org/wsvn/packages/pilot-link/trunk/pilot-link-png14.patch
  
  	if (!png_ptr)
  		return;
---- src/pilot-read-veo.c
-+++ src/pilot-read-veo.c
+--- ./src/pilot-read-veo.c
++++ ./src/pilot-read-veo.c
 @@ -41,10 +41,6 @@
  
  #ifdef HAVE_PNG
