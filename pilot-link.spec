@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	16
+Release:	17
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
 URL:		http://www.pilot-link.org/
