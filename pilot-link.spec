@@ -99,7 +99,7 @@ This package provides perl modules for supporting Palm.
 
 %prep 
 %setup -q -a 1
-%apply_patches
+%autopatch -p1
 
 autoreconf -fi
 
