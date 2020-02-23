@@ -104,7 +104,7 @@ This package provides perl modules for supporting Palm.
 autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
 	--with-perl \
 	--enable-conduits \
 	--enable-libusb \
@@ -112,10 +112,10 @@ autoreconf -fi
 	--disable-static
 
 # parallel compilation is broken
-make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # fix manpage install
 %makeinstall_std -C doc/man
