@@ -1,0 +1,37 @@
+diff --git a/configure.ac b/configure.ac
+index 9d4774b..d4f942c 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -16,8 +16,8 @@ dnl ******************************
+ dnl Limit to a specific ac version
+ dnl ******************************
+ AC_PREREQ(2.53)
+-AM_CONFIG_HEADER(config.h)
+-AM_CONFIG_HEADER(include/pi-md5.h)
++AC_CONFIG_HEADERS(config.h)
++AC_CONFIG_HEADERS(include/pi-md5.h)
+ 
+ dnl ******************************
+ dnl Pilot Link Version
+@@ -402,14 +402,13 @@ if test "x$enable_conduits" != "xno"; then
+ 	if test "x$with_included_popt" != "xyes"; then
+ 		dnl Determine if system popt is good enough
+ 		save_LIBS="$LIBS"
+-		AC_CHECK_HEADER(popt.h,
+-			AC_CHECK_DECL(POPT_BIT_SET,
+-				AC_CHECK_LIB(popt, poptStrippedArgv,,
+-					[with_included_popt="yes"]),
+-				[with_included_popt="yes"],
+-				[#include <popt.h>]),
+-			[with_included_popt="yes"]
+-		)
++		AC_CHECK_HEADER(popt.h,,[with_included_popt="yes"])
++		if test "x$with_included_popt" != "xyes"; then
++			AC_CHECK_DECL(POPT_BIT_SET,,[with_included_popt="yes"],[#include <popt.h>])
++				if test "x$with_included_popt" != "xyes"; then
++					AC_CHECK_LIB(popt, poptStrippedArgv,,[with_included_popt="yes"])
++				fi
++		fi
+ 		LIBS="$save_LIBS"
+ 	fi
+ 
