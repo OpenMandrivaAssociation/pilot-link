@@ -30,7 +30,7 @@ Patch6:		pilot-link-0.12.3-no-werror-messup.patch
 Patch7:		pilot-link-0.12.3-fix-format-strings.patch
 Patch8:		pilot-link-0.12.5-build_with_perl514.patch
 Patch9:		pilot-link-0.12.3-libpng14.patch
-Patch10:	pilot-link-automake-1.13.patch
+#Patch10:	pilot-link-automake-1.13.patch
 Patch11:	pilot-link-autoconf.patch
 BuildRequires:	bison
 BuildRequires:	chrpath
