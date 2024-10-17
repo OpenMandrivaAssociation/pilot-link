@@ -12,7 +12,7 @@ Version:	0.12.5
 Release:	33
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
-Url:		http://www.pilot-link.org/
+Url:		https://www.pilot-link.org/
 Source0:	http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
