@@ -9,10 +9,10 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	33
+Release:	34
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
-Url:		https://www.pilot-link.org/
+Url:		https://github.com/jichu4n/pilot-link
 Source0:	http://www.pilot-link.org/source/pilot-link-%{version}.tar.bz2 
 Source1:	connect-palm-ppp.tar.bz2
 Source2:	19-palm-acl-management.fdi
@@ -184,4 +184,3 @@ install -p -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/profile.d/
 %{_mandir}/man3/PDA::Pilot.*
 %{perl_vendorarch}/PDA/*
 %{perl_vendorarch}/auto/PDA/*
-
