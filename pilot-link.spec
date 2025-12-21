@@ -32,6 +32,11 @@ Patch8:		pilot-link-0.12.5-build_with_perl514.patch
 Patch9:		pilot-link-0.12.3-libpng14.patch
 #Patch10:	pilot-link-automake-1.13.patch
 Patch11:	pilot-link-autoconf.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	chrpath
 BuildRequires:	libtool
