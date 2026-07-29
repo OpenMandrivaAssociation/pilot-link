@@ -1,3 +1,5 @@
+%define _disable_lto 1
+%define _disable_ld_no_undefined 1
 %define	__noautoreq	'perl\\(PDA::Pilot\\)'
 
 %define	major	9
@@ -9,7 +11,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	37
+Release:	38
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
 Url:		https://github.com/jichu4n/pilot-link
@@ -109,6 +111,8 @@ This package provides perl modules for supporting Palm.
 autoreconf -fi
 
 %build
+export CFLAGS="%{optflags} -std=gnu17"
+export CXXFLAGS="%{optflags} -std=gnu++17"
 %configure \
 	--with-perl \
 	--enable-conduits \
