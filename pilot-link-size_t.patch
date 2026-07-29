@@ -1,0 +1,13 @@
+--- pilot-link-0.12.5.orig/src/pilot-read-todos.c	2009-06-04 15:32:32.000000000 +0200
++++ pilot-link-0.12.5/src/pilot-read-todos.c	2026-07-29 22:41:35.368106386 +0200
+@@ -202,8 +202,8 @@
+ 
+ 	for (i = 0;; i++) {
+ 		int 	attr,
+-			category,
+-			len;
++			category;
++		size_t	len;
+ 
+ 		struct 	ToDo todo;
+ 
