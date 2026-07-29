@@ -9,7 +9,7 @@
 Summary:	File transfer utilities between Linux and PalmPilots
 Name:		pilot-link
 Version:	0.12.5
-Release:	36
+Release:	37
 License:	GPLv2+ and LGPLv2+
 Group:		Communications
 Url:		https://github.com/jichu4n/pilot-link
@@ -39,7 +39,6 @@ BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	chrpath
-BuildRequires:	libtool
 BuildRequires:	readline-devel
 BuildRequires:	perl-devel
 BuildRequires:	pkgconfig(bluez)
